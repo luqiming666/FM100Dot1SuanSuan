@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
         var result23: Float
         var result34: Float
         for (i in 0..3) {
-            result12 = stepForward(inputNumbers[0].toFloat(), inputNumbers[1].toFloat(), i)
+            result12 = stepCalculate(inputNumbers[0].toFloat(), inputNumbers[1].toFloat(), i)
             for (j in 0..3) {
-                result23 = stepForward(result12, inputNumbers[2].toFloat(), j)
+                result23 = stepCalculate(result12, inputNumbers[2].toFloat(), j)
                 for (k in 0..3) {
-                    result34 = stepForward(result23, inputNumbers[3].toFloat(), k)
+                    result34 = stepCalculate(result23, inputNumbers[3].toFloat(), k)
                     if (result34.toInt() == inputNumbers[4]) {
                         binding.tvResult.setTextColor(Color.GREEN)
                         binding.tvResult.text = "${inputNumbers[0]}${stepOperator(i)}" +
@@ -60,10 +60,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.tvResult.text = "无解！题目出错了吧？！"
+        binding.tvResult.text = "无解！题目搞错了吧？！"
     }
 
-    private fun stepForward(first: Float, second: Float, step: Int) : Float {
+    private fun stepCalculate(first: Float, second: Float, step: Int) : Float {
         when (step) {
             0 -> return first + second
             1 -> return first - second
