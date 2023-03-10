@@ -44,11 +44,14 @@ class MainActivity : AppCompatActivity() {
         var result34: Float
         for (i in 0..3) {
             result12 = stepCalculate(inputNumbers[0].toFloat(), inputNumbers[1].toFloat(), i)
+            if (result12.isNaN()) continue // 发生除零错误时
             for (j in 0..3) {
                 result23 = stepCalculate(result12, inputNumbers[2].toFloat(), j)
+                if (result23.isNaN()) continue
                 for (k in 0..3) {
                     result34 = stepCalculate(result23, inputNumbers[3].toFloat(), k)
-                    if (result34.toInt() == inputNumbers[4]) {
+                    if (result34.isNaN()) continue
+                    if (result34.compareTo(inputNumbers[4]) == 0) {
                         binding.tvResult.setTextColor(Color.GREEN)
                         binding.tvResult.text = "${inputNumbers[0]}${stepOperator(i)}" +
                                 "${inputNumbers[1]}${stepOperator(j)}" +
